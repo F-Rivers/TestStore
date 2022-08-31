@@ -2,7 +2,6 @@ import ProductPageContent from "../../components/ProductPageContent";
 import { getAllProducts, getProduct } from "../../lib/shopify";
 
 export default function ProductPage({ product }) {
-	console.log("Product: ", product);
 	return (
 		<div>
 			<ProductPageContent product={product} />

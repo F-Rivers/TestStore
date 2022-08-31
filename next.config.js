@@ -1,11 +1,14 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
-	reactStrictMode: true,
+const nextConfig = {
+	reactStrictMode: false,
+	swcMinify: true,
 	env: {
 		SHOPIFY_STORE_DOMAIN: process.env.SHOPIFY_STORE_DOMAIN,
 		SHOPIFY_STOREFRONT_ACCESSTOKEN: process.env.SHOPIFY_STOREFRONT_ACCESSTOKEN,
 	},
-	// images: {
-	// 	domain: ["cdn.shopify.com"],
-	// },
+	images: {
+		domains: ["cdn.shopify.com"],
+	},
 };
+
+module.exports = nextConfig;

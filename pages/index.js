@@ -3,7 +3,6 @@ import { getProductsInCollection } from "../lib/shopify";
 import Hero from "../components/Hero";
 
 export default function Home({ products }) {
-	console.log(products);
 	return (
 		<div className=''>
 			<Hero />
