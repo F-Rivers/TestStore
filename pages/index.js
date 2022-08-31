@@ -1,6 +1,6 @@
+import Hero from "../components/Hero";
 import ProductList from "../components/ProductList";
 import { getProductsInCollection } from "../lib/shopify";
-import Hero from "../components/Hero";
 
 export default function Home({ products }) {
 	return (

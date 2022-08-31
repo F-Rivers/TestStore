@@ -1,7 +1,7 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { createCheckout, updateCheckout } from "../lib/shopify";
 
-// access data from different nested components without necessarily using props
+// access data from different nested components without neccessarily using props
 const CartContext = createContext();
 
 export default function ShopProvider({ children }) {
@@ -72,7 +72,7 @@ export default function ShopProvider({ children }) {
 	async function removeCartItem(itemToRemove) {
 		// to remove items we use built in js filter method
 		const updatedCart = cart.filter((item) => item.id !== itemToRemove);
-		//sets updated cart to cart, local storage, and checkout
+		//sets updated cart to cart, localstorage, and checkout
 		setCart(updatedCart);
 		const newCheckout = await updateCheckout(checkoutId, updatedCart);
 

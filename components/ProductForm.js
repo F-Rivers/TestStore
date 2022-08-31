@@ -6,7 +6,7 @@ import ProductOptions from "./ProductOptions";
 export default function ProductForm({ product }) {
 	// creates add to cart function used in button
 	// need to destructure the object to access it
-	const { ...addToCart } = useContext(CartContext);
+	const { addToCart } = useContext(CartContext);
 
 	// maps over all the products variants
 	const allVariantOptions = product.variants.edges?.map((variant) => {
