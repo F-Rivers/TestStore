@@ -18,7 +18,6 @@ export default function ProductOptions({
 					return (
 						// creates the form content
 						<label key={id} htmlFor={id}>
-							{/* all the variant options match with the label */}
 							<input
 								className='sr-only'
 								type='radio'
