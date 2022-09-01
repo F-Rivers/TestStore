@@ -4,14 +4,12 @@ import { formatter } from "../utils/helpers";
 import ProductOptions from "./ProductOptions";
 
 export default function ProductForm({ product }) {
+	// const [available, setAvailable] = useState(true);
 	// creates add to cart function used in button
-	// need to destructure the object to access it
+	// need to destructure the object to access it?
 	const { addToCart } = useContext(CartContext);
-
-	// maps over all the products variants
 	const allVariantOptions = product.variants.edges?.map((variant) => {
 		const allOptions = {};
-
 		// maps over selectedOptions and saves them into all Options as key value pairs
 		variant.node.selectedOptions.map((item) => {
 			allOptions[item.name] = item.value;
@@ -41,7 +39,6 @@ export default function ProductForm({ product }) {
 		setSelectedOptions((prevState) => {
 			return { ...prevState, [name]: value };
 		});
-
 		const selection = {
 			...selectedOptions,
 			[name]: value,
@@ -53,6 +50,19 @@ export default function ProductForm({ product }) {
 			}
 		});
 	}
+	// useEffect(() => {
+	// 	if (productInventory) {
+	// 		const checkAvailable = productInventory?.variants.edges.filter(
+	// 			(item) => item.node.id === selectedVariant.id
+	// 		);
+
+	// 		if (checkAvailable[0].node.availableForSale) {
+	// 			setAvailable(true);
+	// 		} else {
+	// 			setAvailable(false);
+	// 		}
+	// 	}
+	// }, [productInventory, selectedVariant]);
 
 	return (
 		<div className='rounded-2xl p-4 shadow-lg flex flex-col w-full md:w-1/3'>
@@ -60,8 +70,6 @@ export default function ProductForm({ product }) {
 			<span className='pb-3'>
 				{formatter.format(product.variants.edges[0].node.priceV2.amount)}
 			</span>
-
-			{/* creates the two separate forms containing the product options because of the map*/}
 			{product.options.map(({ name, values }) => {
 				return (
 					<ProductOptions
@@ -73,6 +81,7 @@ export default function ProductForm({ product }) {
 					/>
 				);
 			})}
+			{/* {available ? ( */}
 			<button
 				// adding the selected variant to the cart
 				onClick={() => addToCart(selectedVariant)}
@@ -80,6 +89,11 @@ export default function ProductForm({ product }) {
 			>
 				Add To Cart
 			</button>
+			{/* ) : (
+			<button className='rounded-lg mt-3 text-white px-2 py-3 bg-gray-800 cursor-not-allowed'>
+				Sold Out!
+			</button>
+			)} */}
 		</div>
 	);
 }
